@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Fabricio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Fabricio.dev</div>
+        <nav>
+            <ul>
+                <li><button class="nav-btn active" onclick="showScreen('home', this)">Início</button></li>
+                <li><button class="nav-btn" onclick="showScreen('projects', this)">Meus Projetos</button></li>
+                <li><button class="nav-btn" onclick="showScreen('about', this)">Sobre e Contato</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- TELA INICIAL -->
+        <section id="home" class="screen active">
+            <div class="hero">
+                <h1>Olá, eu sou o <span>Fabricio</span></h1>
+                <p>Bem-vindo ao meu portfólio de projetos. Aqui está organizado o desenvolvimento semanal das minhas atividades nas disciplinas de tecnologia.</p>
+                <button class="btn-primary" onclick="goToProjects()">Explorar Meus Projetos</button>
+            </div>
+        </section>
+
+        <!-- TELA DE PROJETOS (MATÉRIAS E SEMANAS) -->
+        <section id="projects" class="screen">
+            <h2 class="section-title">Minhas Matérias e Projetos</h2>
+            <p class="section-subtitle">Clique em uma matéria para abrir as semanas e gerenciar ou acessar as atividades.</p>
+
+            <!-- Cards das matérias gerados pelo JS -->
+            <div class="subjects-grid" id="subjectsGrid"></div>
+
+            <!-- Painel de Semanas -->
+            <div id="weeksContainer" class="weeks-container" style="display: none;">
+                <div class="weeks-header">
+                    <div>
+                        <h3 id="selectedSubjectTitle">Matéria</h3>
+                        <p id="selectedSubjectRange">Semanas</p>
+                    </div>
+                    <button class="btn-close" onclick="closeSubject()">Fechar Matéria</button>
+                </div>
+
+                <!-- Botões das semanas gerados pelo JS -->
+                <div class="weeks-grid" id="weeksGrid"></div>
+
+                <!-- Painel de Atividades dentro da Semana -->
+                <div id="activitiesPanel" class="activities-panel" style="display: none;">
+                    <h4 id="selectedWeekTitle">Atividades da Semana</h4>
+                    
+                    <form class="activity-form" onsubmit="addActivity(event)">
+                        <h5>+ Adicionar Nova Atividade nesta Semana</h5>
+                        <div class="form-group">
+                            <label for="actTitle">Título da Atividade *</label>
+                            <input type="text" id="actTitle" placeholder="Ex: Criação de API REST" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="actDesc">Descrição *</label>
+                            <textarea id="actDesc" rows="2" placeholder="Resumo do que foi feito na atividade..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="actLink">Link para Acessar a Atividade (GitHub, Drive, Site ou Arquivo) *</label>
+                            <input type="text" id="actLink" placeholder="Ex: https://github.com" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Salvar Atividade na Semana</button>
+                    </form>
+
+                    <div id="activityList" class="activity-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TELA SOBRE E CONTATO -->
+        <section id="about" class="screen">
+            <h2 class="section-title">Sobre Mim e Contato</h2>
+            <p class="section-subtitle">Saiba mais sobre mim e veja como entrar em contato.</p>
+
+            <div class="about-contact-grid">
+                <div class="card-box">
+                    <h3>Sobre o Fabricio</h3>
+                    <p>Olá! Meu nome é Fabricio e sou estudante da área de Desenvolvimento de Sistemas. Este portfólio foi criado para reunir e documentar minhas entregas práticas ao longo do curso.</p>
+                    <p>Aqui acompanho minha evolução semana a semana nas disciplinas de Back-end, Front-end, Modelagem de Banco de Dados, Desenvolvimento Mobile, Versionamento e Inteligência Artificial.</p>
+                </div>
+
+                <div class="card-box">
+                    <h3>Contato</h3>
+                    <p>Entre em contato comigo através dos canais abaixo:</p>
+                    <ul class="contact-list">
+                        <li><span>E-mail:</span> 00001126796293SP@aluno.educacao.sp.gov.br</li>
+                        <li><span>GitHub:</span>https://github.com/fabricio06231/Portfolio</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Fabricio - Portfólio de Projetos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
